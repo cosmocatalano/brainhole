@@ -15,13 +15,13 @@ function get_og($html) {
 
 //changes og:image to your specified dimensions and size
 function set_image($img_url, $image_dimension, $image_width) {
-	$url_shards = explode('/', $img_url);
-	$url_shards[4] = $image_dimension;
-	$url_shards[5] = $image_width;
-	$new_url = "http://chimg.onionstatic.com/".$url_shards[3].'/'.$url_shards[4].'/'.$url_shards[5].'.jpg';
+	$url_shards = explode('/', (string)$img_url);
+	$url_shards[6] = $image_dimension;
+	$url_shards[7] = $image_width;
+	$new_url = 'http://'.$url_shards[2].'/'. $url_shards[3].'/'.$url_shards[4].'/'.$url_shards[5].'/'.$url_shards[6].'/'.$url_shards[7].'.jpg';
 	return $new_url;
 }
-//Grabbing part of the target page to get the og:image URL; chose 2048 bytes arbitrarily,
+//Grabbing part of the target page to get the og:image URL; choose 2048 bytes arbitrarily,
 //getting the og:image url, changing it to our desired size
 function get_image($link, $image_dimension, $image_width) {
 	$target_page = file_get_contents($link, NULL, NULL, 0, 2000);
