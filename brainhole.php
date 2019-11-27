@@ -12,7 +12,7 @@ $image_prog = 'fl_progressive';
 //get cloudinary image of desired size
 function hack_image($desc_array, $img_w, $img_h, $img_c, $img_q, $img_p) {
 	$img_shard = explode('img src="', $desc_array[0]);
-	$img_url = explode('" />',$img_shard[1]);
+	$img_url = explode('"/>',$img_shard[1]);
 	$img_slug = explode('c_fit', $img_url[0]);
 	$img_id = explode('w_636', $img_url[0]);
 	return $img_slug[0].$img_c.','.$img_p.','.$img_w.','.$img_h.$img_id[1];
